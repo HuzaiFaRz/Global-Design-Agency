@@ -30,6 +30,7 @@ function navMenuAnimation() {
 
     gsap.to(navMenuOffcanvas, {
       top: "10%",
+      backgroundColor: "#bcbeb3",
       duration: 0.2,
       delay: 0.2,
       ease: Power2,
@@ -58,6 +59,7 @@ function navMenuAnimation() {
     });
     gsap.to(navMenuOffcanvas, {
       top: "-100%",
+      backgroundColor: "rgb(231, 228, 229, 1)",
       duration: 0.2,
       delay: 0.2,
       ease: Power2,
@@ -65,6 +67,27 @@ function navMenuAnimation() {
   });
 }
 navMenuAnimation();
+
+var mainHeading = document.querySelector(".main-heading");
+
+mainHeading.addEventListener("mousemove", function (dets) {
+  var div = document.createElement("div");
+  div.setAttribute("class", "div");
+  var img = document.createElement("img");
+  img.setAttribute("class", "img");
+  img.setAttribute("src", "20230128_184252_mfnr.jpg");
+  div.appendChild(img);
+
+  div.style.left = dets.clientX + "px";
+  div.style.top = dets.clientY + "px";
+
+  document.body.appendChild(div);
+
+  console.log(div);
+  setTimeout(() => {
+    div.remove();
+  }, 200);
+});
 
 // navOffcanvasLink[0].addEventListener("click", function () {
 //   gsap.to(navOffcanvasLinkHome, {
@@ -75,7 +98,6 @@ navMenuAnimation();
 //     delay: 0.3,
 //   });
 // });
-
 
 // function navOffcanvasLinksAnimation() {
 //   navOffcanvasLink.forEach(function (a) {
