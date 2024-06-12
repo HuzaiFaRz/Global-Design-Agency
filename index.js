@@ -3,6 +3,7 @@ var navMenuOffcanvas = document.querySelector(".nav-offcanvas");
 var navMenu = document.querySelector(".nav-menu");
 var navClose = document.querySelector(".nav-close");
 var navOffcanvasLink = document.querySelectorAll(".nav-offcanvas-link");
+var navOffcanvasLinkHome = document.querySelectorAll(".home");
 
 function navMenuAnimation() {
   navMenu.addEventListener("click", () => {
@@ -65,11 +66,36 @@ function navMenuAnimation() {
 }
 navMenuAnimation();
 
-function navOffcanvasLinksAnimation() {
-  navOffcanvasLink.forEach(function (a) {
-    a.addEventListener("mouseover", function () {
-      console.log("mouserover");
-    });
-  });
-}
-navOffcanvasLinksAnimation();
+// navOffcanvasLink[0].addEventListener("click", function () {
+//   gsap.to(navOffcanvasLinkHome, {
+//     transform: "rotateY(0deg)",
+//     scale: 1,
+//     opacity: 1,
+//     duration: 1,
+//     delay: 0.3,
+//   });
+// });
+
+
+// function navOffcanvasLinksAnimation() {
+//   navOffcanvasLink.forEach(function (a) {
+//     a.addEventListener("mouseenter", function () {
+//       gsap.to(navOffcanvasLink,{
+//         transform:"rotateY(20deg)",
+//         opacity: 0,
+//         duration: 0.5,
+//         delay: 0.3,
+//         ease: Power2,
+//       })
+//     });
+//     a.addEventListener("mouseleave", function () {
+//       gsap.to(navOffcanvasLink,{
+//         opacity: 1,
+//         duration: 0.5,
+//         delay: 0.3,
+//         ease: Power2,
+//       })
+//     });
+//   });
+// }
+// navOffcanvasLinksAnimation();

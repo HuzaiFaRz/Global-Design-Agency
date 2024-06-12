@@ -115,6 +115,8 @@ nav {
 }
 
 .nav-offcanvas-links {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -123,6 +125,8 @@ nav {
 }
 
 .nav-offcanvas-link {
+  transition: all 0.3s linear;
+  position: relative;
   transition: font 0.3s linear;
   text-decoration: none;
   color: #030304;
@@ -130,12 +134,73 @@ nav {
   font-size: 100px;
   font-weight: 900;
   cursor: pointer;
+  transform: rotateY(0deg);
+  opacity: 1;
+}
+
+
+
+/* .nav-offcanvas-link:hover{
+  transition: all 0.3s linear;
+  transform: rotateY(180deg);
+  opacity: 0;
+} */
+
+
+.nav-offcanvas-link:before {
+  transition: all 0.3s linear;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+  font-family: font2;
+  transform: rotateY(180deg);
+  scale: 0.1;
+  opacity: 0;
 }
 
 .nav-offcanvas-link:hover {
-  transition: font 0.3s linear;
-  font-family: font2;
+  transform: rotateY(180deg);
+  scale: 0.1;
 }
+
+
+
+
+.nav-offcanvas-link:hover::before {
+  transition: all 0.3s linear;
+  transform: rotateY(0deg);
+  scale: 1;
+  opacity: 1;
+}
+
+.nav-offcanvas-link:nth-child(1)::before {
+  content: "HOME";
+}
+
+.nav-offcanvas-link:nth-child(2)::before {
+  content: "ABOUTUS";
+}
+
+.nav-offcanvas-link:nth-child(3)::before {
+  content: "NEWS";
+}
+
+.nav-offcanvas-link:nth-child(4)::before {
+  content: "VENTURES";
+}
+
+.nav-offcanvas-link:nth-child(5)::before {
+  content: "CONTACT";
+}
+
 
 .nav-offcanvas-platform {
   width: 100%;
