@@ -100,6 +100,9 @@ const throttleFunction = (func, delay) => {
 
 var imagesURLArray = [
   {
+    url: "-0.jpg",
+  },
+  {
     url: "0.jpg",
   },
 
@@ -264,42 +267,46 @@ mainH1.forEach(function (b) {
   b.addEventListener(
     "mousemove",
     throttleFunction((dets) => {
-      var imagesURLRandomNum = Math.floor(
-        Math.random() * imagesURLArray.length
-      );
-      var div = document.createElement("div");
-      div.classList.add("div");
-      div.style.left = dets.clientX + "px";
-      div.style.top = dets.clientY + "px";
-      var img = document.createElement("img");
+      try {
+        var imagesURLRandomNum = Math.floor(
+          Math.random() * imagesURLArray.length
+        );
+        var div = document.createElement("div");
+        div.classList.add("div");
+        div.style.left = dets.clientX + "px";
+        div.style.top = dets.clientY + "px";
+        var img = document.createElement("img");
 
-      if (imagesURLRandomNum > 32) {
-        img.setAttribute("src", imagesURLRandomNum + ".jpeg");
-      } else {
-        img.setAttribute("src", imagesURLRandomNum + ".jpg");
+        if (imagesURLRandomNum > 32) {
+          img.setAttribute("src", imagesURLRandomNum + ".jpeg");
+        } else {
+          img.setAttribute("src", imagesURLRandomNum + ".jpg");
+        }
+
+        div.appendChild(img);
+
+        document.body.appendChild(div);
+
+        gsap.to(img, {
+          y: "0",
+          ease: Power1,
+          duration: 0.6,
+        });
+        gsap.to(img, {
+          y: "100%",
+          ease: Power2,
+          delay: 0.6,
+        });
+
+        document.body.style.overflow = "hidden";
+
+        setTimeout(() => {
+          div.remove();
+        }, 1000);
+      } catch (error) {
+        console.log(error);
       }
-
-      div.appendChild(img);
-
-      document.body.appendChild(div);
-
-      gsap.to(img, {
-        y: "0",
-        ease: Power1,
-        duration: 0.6,
-      });
-      gsap.to(img, {
-        y: "100%",
-        ease: Power2,
-        delay: 0.6,
-      });
-
-      document.body.style.overflow = "hidden";
-
-      setTimeout(() => {
-        div.remove();
-      }, 2000);
-    }, 200)
+    }, 100)
   );
 });
 
