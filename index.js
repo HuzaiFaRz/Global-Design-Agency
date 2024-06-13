@@ -69,25 +69,159 @@ function navMenuAnimation() {
 navMenuAnimation();
 
 var mainHeading = document.querySelector(".main-heading");
+const btn = document.querySelector("#throttle");
 
-mainHeading.addEventListener("mousemove", function (dets) {
-  var div = document.createElement("div");
-  div.setAttribute("class", "div");
-  var img = document.createElement("img");
-  img.setAttribute("class", "img");
-  img.setAttribute("src", "20230128_184252_mfnr.jpg");
-  div.appendChild(img);
+// Throttling Function
+const throttleFunction = (func, delay) => {
+  // Previously called time of the function
+  let prev = 0;
+  return (...args) => {
+    // Current called time of the function
+    let now = new Date().getTime();
 
-  div.style.left = dets.clientX + "px";
-  div.style.top = dets.clientY + "px";
+    // Logging the difference
+    // between previously
+    // called and current called timings
 
-  document.body.appendChild(div);
+    // If difference is greater
+    // than delay call
+    // the function again.
+    if (now - prev > delay) {
+      prev = now;
 
-  console.log(div);
-  setTimeout(() => {
-    div.remove();
-  }, 200);
-});
+      // "..." is the spread
+      // operator here
+      // returning the function with the
+      // array of arguments
+      return func(...args);
+    }
+  };
+};
+
+var imagesURLArray = [
+  {
+    url: "0.jpg",
+  },
+  {
+    url: "1.jpg",
+  },
+  { url: "2.jpg" },
+  {
+    url: "3.jpg",
+  },
+  {
+    url: "4.jpg",
+  },
+  {
+    url: "5.jpg",
+  },
+  {
+    url: "6.jpg",
+  },
+  {
+    url: "7.jpg",
+  },
+  {
+    url: "8.jpg",
+  },
+  {
+    url: "9.jpg",
+  },
+  {
+    url: "10.jpg",
+  },
+
+  {
+    url: "11.jpg",
+  },
+
+  { url: "12.jpg" },
+  {
+    url: "13.jpg",
+  },
+  {
+    url: "14.jpg",
+  },
+  {
+    url: "15.jpg",
+  },
+  {
+    url: "16.jpg",
+  },
+  {
+    url: "17.jpg",
+  },
+  {
+    url: "18.jpg",
+  },
+  {
+    url: "19.jpg",
+  },
+  {
+    url: "20.jpg",
+  },
+
+  {
+    url: "21.jpg",
+  },
+
+  { url: "22.jpg" },
+  {
+    url: "23.jpg",
+  },
+  {
+    url: "24.jpg",
+  },
+  {
+    url: "25.jpg",
+  },
+  {
+    url: "26.jpg",
+  },
+  {
+    url: "27.jpg",
+  },
+  {
+    url: "28.jpg",
+  },
+  {
+    url: "29.jpg",
+  },
+  {
+    url: "30.jpg",
+  },
+];
+
+mainHeading.addEventListener(
+  "mousemove",
+  throttleFunction((dets) => {
+    var imagesURLRandomNum = Math.floor(Math.random() * imagesURLArray.length);
+    console.log(imagesURLRandomNum + ".jpg");
+    var div = document.createElement("div");
+    div.classList.add("div");
+    div.style.left = dets.clientX + "px";
+    div.style.top = dets.clientY + "px";
+    var img = document.createElement("img");
+    img.setAttribute("src", imagesURLRandomNum + ".jpg");
+    div.appendChild(img);
+
+    document.body.appendChild(div);
+
+    gsap.to(img, {
+      y: "0",
+      ease: Power1,
+      duration: 0.6,
+    });
+    gsap.to(img, {
+      y: "100%",
+      ease: Power2,
+      delay: 0.6,
+    });
+    setTimeout(() => {
+      div.remove();
+    }, 2000);
+  }, 200)
+);
 
 // navOffcanvasLink[0].addEventListener("click", function () {
 //   gsap.to(navOffcanvasLinkHome, {
