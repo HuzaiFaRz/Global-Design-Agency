@@ -82,7 +82,7 @@ var throttleFunction = (func, delay) => {
   };
 };
 
-throttleFunction()
+throttleFunction();
 
 var imagesURLArray = [
   {
