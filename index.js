@@ -271,7 +271,6 @@ mainH1.forEach(function (b) {
         var imagesURLRandomNum = Math.floor(
           Math.random() * imagesURLArray.length
         );
-        console.log(imagesURLRandomNum);
         var div = document.createElement("div");
         div.classList.add("div");
         div.style.left = dets.clientX + "px";
