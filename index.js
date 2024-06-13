@@ -71,17 +71,18 @@ navMenuAnimation();
 var mainH1 = document.querySelectorAll(".main-heading > h1");
 const btn = document.querySelector("#throttle");
 
-
-const throttleFunction = (func, delay) => {
-  let prev = 0;
+var throttleFunction = (func, delay) => {
+  var prev = 0;
   return (...args) => {
-    let now = new Date().getTime();
+    var now = new Date().getTime();
     if (now - prev > delay) {
       prev = now;
       return func(...args);
     }
   };
 };
+
+throttleFunction()
 
 var imagesURLArray = [
   {
@@ -247,54 +248,55 @@ var imagesURLArray = [
     url: "50.jpeg",
   },
 ];
+function mainhtanimation() {
+  mainH1.forEach(function (b) {
+    b.addEventListener(
+      "mousemove",
+      throttleFunction((dets) => {
+        try {
+          var imagesURLRandomNum = Math.floor(
+            Math.random() * imagesURLArray.length
+          );
+          var div = document.createElement("div");
+          div.classList.add("div");
+          div.style.left = dets.clientX + "px";
+          div.style.top = dets.clientY + "px";
+          var img = document.createElement("img");
 
-mainH1.forEach(function (b) {
-  b.addEventListener(
-    "mousemove",
-    throttleFunction((dets) => {
-      try {
-        var imagesURLRandomNum = Math.floor(
-          Math.random() * imagesURLArray.length
-        );
-        var div = document.createElement("div");
-        div.classList.add("div");
-        div.style.left = dets.clientX + "px";
-        div.style.top = dets.clientY + "px";
-        var img = document.createElement("img");
+          if (imagesURLRandomNum > 32) {
+            img.setAttribute("src", imagesURLRandomNum + ".jpeg");
+          } else {
+            img.setAttribute("src", imagesURLRandomNum + ".jpg");
+          }
 
-        if (imagesURLRandomNum > 32) {
-          img.setAttribute("src", imagesURLRandomNum + ".jpeg");
-        } else {
-          img.setAttribute("src", imagesURLRandomNum + ".jpg");
+          div.appendChild(img);
+
+          document.body.appendChild(div);
+
+          gsap.to(img, {
+            y: "0",
+            ease: Power1,
+            duration: 0.6,
+          });
+          gsap.to(img, {
+            y: "100%",
+            ease: Power2,
+            delay: 0.6,
+          });
+
+          document.body.style.overflow = "hidden";
+
+          setTimeout(() => {
+            div.remove();
+          }, 2000);
+        } catch (error) {
+          console.log(error);
         }
-
-        div.appendChild(img);
-
-        document.body.appendChild(div);
-
-        gsap.to(img, {
-          y: "0",
-          ease: Power1,
-          duration: 0.6,
-        });
-        gsap.to(img, {
-          y: "100%",
-          ease: Power2,
-          delay: 0.6,
-        });
-
-        document.body.style.overflow = "hidden";
-
-        setTimeout(() => {
-          div.remove();
-        }, 2000);
-      } catch (error) {
-        console.log(error);
-      }
-    }, 300)
-  );
-});
-
+      }, 300)
+    );
+  });
+}
+mainhtanimation();
 // navOffcanvasLink[0].addEventListener("click", function () {
 //   gsap.to(navOffcanvasLinkHome, {
 //     transform: "rotateY(0deg)",

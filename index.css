@@ -92,7 +92,6 @@ nav {
   font-family: font3;
   font-weight: 400;
   cursor: pointer;
-  z-index: 999999;
 }
 
 .nav-offcanvas {
@@ -208,10 +207,28 @@ nav {
 }
 
 .nav-offcanvas-platform > h4 {
+  position: relative;
+  overflow: hidden;
   color: #030304;
   font-family: font3;
   font-weight: 400;
   cursor: pointer;
+}
+
+.nav-offcanvas-platform > h4::before {
+  transition: all 0.3s linear;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
+.nav-offcanvas-platform > h4:hover::before {
+  transition: all 0.5s linear;
+  left: 100%;
+  animation: navOffcanvasAnimation 1s linear;
 }
 
 .main-page {
