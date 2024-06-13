@@ -100,9 +100,6 @@ const throttleFunction = (func, delay) => {
 
 var imagesURLArray = [
   {
-    url: "-0.jpg",
-  },
-  {
     url: "0.jpg",
   },
 
@@ -261,6 +258,9 @@ var imagesURLArray = [
   {
     url: "49.jpeg",
   },
+  {
+    url: "50.jpeg",
+  },
 ];
 
 mainH1.forEach(function (b) {
@@ -271,6 +271,7 @@ mainH1.forEach(function (b) {
         var imagesURLRandomNum = Math.floor(
           Math.random() * imagesURLArray.length
         );
+        console.log(imagesURLRandomNum);
         var div = document.createElement("div");
         div.classList.add("div");
         div.style.left = dets.clientX + "px";
@@ -302,11 +303,11 @@ mainH1.forEach(function (b) {
 
         setTimeout(() => {
           div.remove();
-        }, 1000);
+        }, 2000);
       } catch (error) {
         console.log(error);
       }
-    }, 100)
+    }, 300)
   );
 });
 
