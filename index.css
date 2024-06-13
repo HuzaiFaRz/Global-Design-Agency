@@ -25,7 +25,6 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgb(231, 228, 229, 1);
-  overflow: hidden;
 }
 
 nav {
@@ -48,12 +47,9 @@ nav {
   align-items: center;
 }
 
-
-
 #nav-svg {
   fill: black;
 }
-
 
 .nav-menus {
   position: relative;
@@ -144,14 +140,11 @@ nav {
   color: white;
 }
 
-
-
 /* .nav-offcanvas-link:hover{
   transition: all 0.3s linear;
   transform: rotateY(180deg);
   opacity: 0;
 } */
-
 
 /* .nav-offcanvas-link:before {
   transition: all 0.3s linear;
@@ -177,8 +170,6 @@ nav {
   scale:1;
 }
  */
-
-
 
 /* .nav-offcanvas-link:hover::before {
   transition: all 0.3s linear;
@@ -207,7 +198,6 @@ nav {
   content: "CONTACT";
 } */
 
-
 .nav-offcanvas-platform {
   width: 100%;
   display: flex;
@@ -217,7 +207,7 @@ nav {
   gap: 25px 25px;
 }
 
-.nav-offcanvas-platform>h4 {
+.nav-offcanvas-platform > h4 {
   color: #030304;
   font-family: font3;
   font-weight: 400;
@@ -232,7 +222,6 @@ nav {
   justify-content: center;
   align-items: center;
 }
-
 
 .main-heading {
   width: 80%;
@@ -254,8 +243,7 @@ nav {
   transform: translateY(100%);
 }
 
-.main-heading>h1 {
-  width: 100%;
+.main-heading > h1 {
   color: #030304;
   font-weight: 400;
   font-size: 120px;
@@ -264,34 +252,50 @@ nav {
   text-transform: uppercase;
 }
 
-.main-heading>h1:nth-child(1),
+.main-heading > h1:nth-child(1),
 h1:nth-child(2) {
-
   font-family: font1;
-
 }
 
-.main-heading>h1:nth-child(3) {
+.main-heading > h1:nth-child(3) {
   font-family: font2;
 }
 
-@media (max-width:800px) {
+@media (max-width: 1000px) {
+  .nav-offcanvas-link {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 800px) {
   .nav-offcanvas-links {
     gap: 20px;
   }
 
   .nav-offcanvas-link {
-    font-size: 80px;
+    font-size: 70px;
   }
 
   .nav-offcanvas-platform {
     gap: 20px 20px;
   }
 
+  .main-heading {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .main-heading > h1 {
+    font-size: 100px;
+  }
+
+  .main-heading > h1:nth-child(1),
+  h1:nth-child(2) {
+    font-family: font1;
+  }
 }
 
-
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .nav-offcanvas-links {
     gap: 20px;
   }
@@ -304,12 +308,30 @@ h1:nth-child(2) {
     gap: 20px 20px;
   }
 
-  .nav-offcanvas-platform>h4 {
+  .nav-offcanvas-platform > h4 {
     font-size: 14px;
+  }
+
+  .main-heading > h1 {
+    font-size: 80px;
   }
 }
 
-@media (max-width:400px) {
+@media (max-width: 500px) {
+  .main-heading {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-heading > h1 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 400px) {
   #nav-svg {
     fill: black;
     scale: 0.8;
@@ -319,5 +341,9 @@ h1:nth-child(2) {
   .nav-close,
   .nav-work {
     font-size: 13px;
+  }
+
+  .main-heading > h1 {
+    font-size: 50px;
   }
 }

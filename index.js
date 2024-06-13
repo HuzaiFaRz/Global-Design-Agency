@@ -68,7 +68,7 @@ function navMenuAnimation() {
 }
 navMenuAnimation();
 
-var mainHeading = document.querySelector(".main-heading");
+var mainH1 = document.querySelectorAll(".main-heading > h1");
 const btn = document.querySelector("#throttle");
 
 // Throttling Function
@@ -102,10 +102,15 @@ var imagesURLArray = [
   {
     url: "0.jpg",
   },
+
   {
     url: "1.jpg",
   },
-  { url: "2.jpg" },
+
+  {
+    url: "2.jpg",
+  },
+
   {
     url: "3.jpg",
   },
@@ -135,7 +140,9 @@ var imagesURLArray = [
     url: "11.jpg",
   },
 
-  { url: "12.jpg" },
+  {
+    url: "12.jpg",
+  },
   {
     url: "13.jpg",
   },
@@ -165,7 +172,9 @@ var imagesURLArray = [
     url: "21.jpg",
   },
 
-  { url: "22.jpg" },
+  {
+    url: "22.jpg",
+  },
   {
     url: "23.jpg",
   },
@@ -190,38 +199,109 @@ var imagesURLArray = [
   {
     url: "30.jpg",
   },
+  {
+    url: "31.jpg",
+  },
+  {
+    url: "32.jpg",
+  },
+  {
+    url: "33.jpeg",
+  },
+  {
+    url: "34.jpeg",
+  },
+  {
+    url: "35.jpeg",
+  },
+  {
+    url: "36.jpeg",
+  },
+  {
+    url: "37.jpeg",
+  },
+  {
+    url: "38.jpeg",
+  },
+  {
+    url: "39.jpeg",
+  },
+  {
+    url: "40.jpeg",
+  },
+
+  {
+    url: "41.jpeg",
+  },
+
+  {
+    url: "42.jpeg",
+  },
+  {
+    url: "43.jpeg",
+  },
+  {
+    url: "44.jpeg",
+  },
+  {
+    url: "45.jpeg",
+  },
+  {
+    url: "46.jpeg",
+  },
+  {
+    url: "47.jpeg",
+  },
+  {
+    url: "48.jpeg",
+  },
+  {
+    url: "49.jpeg",
+  },
 ];
 
-mainHeading.addEventListener(
-  "mousemove",
-  throttleFunction((dets) => {
-    var imagesURLRandomNum = Math.floor(Math.random() * imagesURLArray.length);
-    console.log(imagesURLRandomNum + ".jpg");
-    var div = document.createElement("div");
-    div.classList.add("div");
-    div.style.left = dets.clientX + "px";
-    div.style.top = dets.clientY + "px";
-    var img = document.createElement("img");
-    img.setAttribute("src", imagesURLRandomNum + ".jpg");
-    div.appendChild(img);
+mainH1.forEach(function (b) {
+  b.addEventListener(
+    "mousemove",
+    throttleFunction((dets) => {
+      var imagesURLRandomNum = Math.floor(
+        Math.random() * imagesURLArray.length
+      );
+      var div = document.createElement("div");
+      div.classList.add("div");
+      div.style.left = dets.clientX + "px";
+      div.style.top = dets.clientY + "px";
+      var img = document.createElement("img");
 
-    document.body.appendChild(div);
+      if (imagesURLRandomNum > 32) {
+        img.setAttribute("src", imagesURLRandomNum + ".jpeg");
+      } else {
+        img.setAttribute("src", imagesURLRandomNum + ".jpg");
+      }
 
-    gsap.to(img, {
-      y: "0",
-      ease: Power1,
-      duration: 0.6,
-    });
-    gsap.to(img, {
-      y: "100%",
-      ease: Power2,
-      delay: 0.6,
-    });
-    setTimeout(() => {
-      div.remove();
-    }, 2000);
-  }, 200)
-);
+      div.appendChild(img);
+
+      document.body.appendChild(div);
+
+      gsap.to(img, {
+        y: "0",
+        ease: Power1,
+        duration: 0.6,
+      });
+      gsap.to(img, {
+        y: "100%",
+        ease: Power2,
+        delay: 0.6,
+      });
+
+      document.body.style.overflow = "hidden";
+
+      setTimeout(() => {
+        div.remove();
+      }, 2000);
+    }, 200)
+  );
+});
 
 // navOffcanvasLink[0].addEventListener("click", function () {
 //   gsap.to(navOffcanvasLinkHome, {
