@@ -288,11 +288,11 @@ function mainhtanimation() {
 
           setTimeout(() => {
             div.remove();
-          }, 1000);
+          }, 1200);
         } catch (error) {
           console.log(error);
         }
-      }, 100)
+      }, 80)
     );
   });
 }
