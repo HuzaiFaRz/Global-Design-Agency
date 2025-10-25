@@ -257,6 +257,8 @@ function mainhtanimation() {
           var imagesURLRandomNum = Math.floor(
             Math.random() * imagesURLArray.length
           );
+
+          console.log(imagesURLRandomNum)
           var div = document.createElement("div");
           div.classList.add("div");
           div.style.left = dets.clientX + "px";
@@ -264,13 +266,12 @@ function mainhtanimation() {
           var img = document.createElement("img");
 
           if (imagesURLRandomNum > 32) {
-            img.setAttribute("src", imagesURLRandomNum + ".jpeg");
+            img.setAttribute("src", `./images/${imagesURLRandomNum}` + ".jpeg");
           } else {
-            img.setAttribute("src", imagesURLRandomNum + ".jpg");
+            img.setAttribute("src",  `./images/${imagesURLRandomNum}` + ".jpg");
           }
 
           div.appendChild(img);
-
           document.body.appendChild(div);
 
           gsap.to(img, {
