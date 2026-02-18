@@ -1,45 +1,40 @@
-# 🚀 AOS Animation Website Clone
+# 🌍 Global Design Agency - Homepage Clone
 
-A fully responsive clone of the AOS (Animate On Scroll) official website built using pure HTML and CSS. This project replicates the layout, design, and visual structure of the original site.
+A responsive homepage clone of the Global Design Agency website built using HTML, CSS, JavaScript, and GSAP animations.
 
-🔗 Live Demo: https://huzaifaaos.netlify.app/  
-🔗 GitHub Repo: https://github.com/HuzaiFaRz/AOS  
-🔗 Original Website: https://michalsnik.github.io/aos/
+🔗 Live Demo: https://huzaifaglobaldesignagency.netlify.app/  
+🔗 GitHub Repo: https://github.com/HuzaiFaRz/Global-Design-Agency  
 
 ---
 
 ## 📌 Project Overview
 
-This project is a front-end clone of the AOS animation website. The goal was to practice layout structuring, responsive design techniques, and accurate UI replication.
+This project focuses on recreating a modern agency homepage with smooth animations and interactive UI elements.
 
 ---
 
 ## ✨ Features
 
-- Fully responsive design (Mobile, Tablet, Desktop)
-- Pixel-perfect layout structure
-- Clean HTML semantic structure
-- Modern CSS styling
-- Optimized section spacing and alignment
+- Fully responsive homepage
+- Smooth GSAP animations
+- Interactive UI components
+- Clean section-based layout
+- Modern typography and spacing
 
 ---
 
 ## 🛠️ Technologies Used
 
 - HTML5
-- CSS3 (Flexbox & Responsive Media Queries)
+- CSS3
+- JavaScript (ES6)
+- GSAP (Animation Library)
 
 ---
 
 ## 🎯 Learning Outcomes
 
-- Improved layout replication skills
-- Better understanding of responsive web design
-- Practiced clean and structured HTML markup
-- Enhanced CSS positioning and spacing control
-
----
-
-## 📄 License
-
-This project is for educational and portfolio purposes only.
+- Practical use of GSAP animations
+- DOM manipulation using JavaScript
+- Responsive design improvements
+- Animation timing and sequencing
