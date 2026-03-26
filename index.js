@@ -129,51 +129,57 @@ var imagesURLArray = [
   "https://images.unsplash.com/photo-1769882199966-9afc908cd379?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIyNXw2c01WalRMU2tlUXx8ZW58MHx8fHx8",
 ];
 
+var touchclients = { x: 0, y: 0 };
+
+var mainPage = document.querySelector(".main-page");
+
+var animationBegin = throttleFunction((dets) => {
+  try {
+    var imagesURLRandomNum = Math.floor(Math.random() * imagesURLArray.length);
+    var div = document.createElement("div");
+    div.classList.add("div");
+    if (dets) {
+      div.style.left = dets.clientX + "px";
+      div.style.top = dets.clientY + "px";
+    } else {
+      div.style.left = touchclients.x + "px";
+      div.style.top = touchclients.y + "px";
+    }
+    var img = document.createElement("img");
+    img.setAttribute("src", imagesURLArray[imagesURLRandomNum]);
+    div.appendChild(img);
+    mainPage.appendChild(div);
+    gsap.to(img, {
+      y: "0",
+      ease: Power1,
+      duration: 0.6,
+    });
+    gsap.to(img, {
+      y: "100%",
+      ease: Power2,
+      delay: 0.6,
+    });
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      div.remove();
+    }, 1100);
+  } catch (error) {
+    console.log(error);
+  }
+}, 80);
+
 function mainhtanimation() {
   mainH1.forEach(function (b) {
-    b.addEventListener(
-      "mousemove",
-      throttleFunction((dets) => {
-        try {
-          var imagesURLRandomNum = Math.floor(
-            Math.random() * imagesURLArray.length,
-          );
-
-          var div = document.createElement("div");
-          div.classList.add("div");
-          div.style.left = dets.clientX + "px";
-          div.style.top = dets.clientY + "px";
-          var img = document.createElement("img");
-
-          img.setAttribute("src", imagesURLArray[imagesURLRandomNum]);
-
-          div.appendChild(img);
-          document.body.appendChild(div);
-
-          gsap.to(img, {
-            y: "0",
-            ease: Power1,
-            duration: 0.6,
-          });
-          gsap.to(img, {
-            y: "100%",
-            ease: Power2,
-            delay: 0.6,
-          });
-
-          document.body.style.overflow = "hidden";
-
-          setTimeout(() => {
-            div.remove();
-          }, 1100);
-        } catch (error) {
-          console.log(error);
-        }
-      }, 80),
-    );
+    b.addEventListener("mousemove", animationBegin);
+    b.addEventListener("touchmove", function (event) {
+      animationBegin();
+      touchclients.x = event.touches[0].clientX;
+      touchclients.y = event.touches[0].clientY;
+    });
   });
 }
 mainhtanimation();
+
 // navOffcanvasLink[0].addEventListener("click", function () {
 //   gsap.to(navOffcanvasLinkHome, {
 //     transform: "rotateY(0deg)",
